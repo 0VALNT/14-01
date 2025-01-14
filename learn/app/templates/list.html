@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+
+<h2><a href="{% url 'book_create' %}">CREATE BOOK</a></h2>
+
+<h2><a href="{% url 'author_create' %}">CREATE AUTHOR</a></h2>
+
+<h2><a href="{% url 'genre_create' %}">CREATE GENRE</a></h2>
+
+    {% for obj in list %}
+<a href="{{obj.id}}"><p>{{ obj }}</p></a>
+    <hr>
+    {% endfor %}
+</body>
+</html>
