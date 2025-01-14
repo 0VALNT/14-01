@@ -48,7 +48,22 @@ class RecordDetail(generic.DetailView):
     template_name = 'detail.html'
     context_object_name = 'obj'
 
+
 def record_delete(request, pk):
     record = Record.objects.get(pk=pk)
     record.delete()
     return redirect('record_list')
+
+
+class RecordUpdate(generic.UpdateView):
+    model = Record
+    template_name = 'form.html'
+    form_class = RecordForm
+    success_url = reverse_lazy('record_list')
+
+
+class AthleteUpdate(generic.UpdateView):
+    model = Athlete
+    template_name = 'form.html'
+    form_class = AthleteForm
+    success_url = reverse_lazy('athlete_list')

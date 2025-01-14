@@ -48,7 +48,22 @@ class NumberDetail(generic.DetailView):
     template_name = 'detail.html'
     context_object_name = 'obj'
 
+
 def number_delete(request, pk):
     number = Number.objects.get(pk=pk)
     number.delete()
     return redirect('number_list')
+
+
+class NumberUpdate(generic.UpdateView):
+    model = Number
+    template_name = 'form.html'
+    form_class = NumberForm
+    success_url = reverse_lazy('number_list')
+
+
+class DeviceUpdate(generic.UpdateView):
+    model = Device
+    template_name = 'form.html'
+    form_class = DeviceForm
+    success_url = reverse_lazy('device_list')

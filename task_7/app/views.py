@@ -48,7 +48,22 @@ class SchoolDetail(generic.DetailView):
     template_name = 'detail.html'
     context_object_name = 'obj'
 
+
 def school_delete(request, pk):
     school = School.objects.get(pk=pk)
     school.delete()
     return redirect('school_list')
+
+
+class SchoolUpdate(generic.UpdateView):
+    model = School
+    template_name = 'form.html'
+    form_class = SchoolForm
+    success_url = reverse_lazy('school_list')
+
+
+class DirectorUpdate(generic.UpdateView):
+    model = Director
+    template_name = 'form.html'
+    form_class = DirectorForm
+    success_url = reverse_lazy('director_list')
